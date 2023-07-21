@@ -16,44 +16,6 @@ void Particle::drawCircle(SDL_Renderer* renderer, float _x, float _y, float _rad
     }
 }
 
-//method to update a particle
-void Particle::update(float deltaTime) {
-    //update position with speed using the delta time
-    float nextX = x + static_cast<float>(velX * deltaTime);
-    float nextY = y + static_cast<float>(velY * deltaTime);
-
-    //collisions with window edges
-    if (nextX - radius < 0) {
-        x = radius;
-        velX = -velX;
-    } else if (nextX + radius > WINDOW_WIDTH) {
-        x = WINDOW_WIDTH - radius;
-        velX = -velX;
-    } else {
-        x = nextX;
-    }
-
-    if (nextY - radius < 0) {
-        y = radius;
-        velY = -velY;
-    } else if (nextY + radius > WINDOW_HEIGHT) {
-        y = WINDOW_HEIGHT - radius;
-        velY = -velY;
-    } else {
-        y = nextY;
-    }
-}
-
-
-//check collisions with other particles
-bool Particle::checkCollision(const Particle &otherParticle) {
-    int dx = otherParticle.x - x;
-    int dy = otherParticle.y - y;
-    int distanceSquared = dx * dx + dy * dy;
-    int radiusSquared = radius * radius;
-    return distanceSquared <= radiusSquared;
-}
-
 //draw a particle
 void Particle::draw(SDL_Renderer* renderer) const {
     SDL_SetRenderDrawColor(renderer, red, green, blue, 255);

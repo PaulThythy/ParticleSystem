@@ -1,22 +1,18 @@
 #include <SDL2/SDL.h>
 #include <iostream>
-#include <vector>
-#include <time.h>
 #include "../include/constants.h"
-#include "../include/particle.h"
+#include "../include/particles.h"
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
 
-std::vector<Particle> particles;
-
-void render(SDL_Renderer* renderer) {
+void render(SDL_Renderer* renderer, Particles particles) {
     //screen cleaning
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
     //drawing particles
-    for (const Particle& particle : particles) {
+    for (const Particle& particle : particles.getVector()) {
         particle.draw(renderer);
     }
 
@@ -50,20 +46,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    srand(time(NULL));
-
-    for(int i=0;i<1000;i++) {
-        float randX = rand() % WINDOW_WIDTH + 1.5;
-        float randY = rand() % WINDOW_HEIGHT + 1.5;
-        float randVelX = rand() % 200 + 50;
-        float randVelY = rand() % 200 + 50;
-        int randRed = rand() % 255;
-        int randGreen = rand() % 255;
-        int randBlue = rand() % 255;
-
-        Particle particle(randX, randY, randVelX, randVelY, 1.5, randRed, randGreen, randBlue, 10);
-        particles.push_back(particle);
-    }
+    Particles particles(5);
 
     Uint32 previousTime = 0;
     //Event handling loop
@@ -83,12 +66,10 @@ int main(int argc, char* argv[]) {
         }
 
         //particle update
-        for (Particle& particle : particles) {
-            particle.update(deltaTime);
-        }
+        particles.update(deltaTime);
 
         //render particles
-        render(renderer);
+        render(renderer, particles);
     }
 
     //free up resources and leave SDL
