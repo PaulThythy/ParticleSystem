@@ -1,3 +1,3 @@
-/home/paul/CLionProjects/particleSystem/cmake-build-debug/CMakeFiles/particleSystem.dir
-/home/paul/CLionProjects/particleSystem/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/paul/CLionProjects/particleSystem/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/paul/CLionProjects/ParticleSystem/cmake-build-debug/CMakeFiles/particleSystem.dir
+/home/paul/CLionProjects/ParticleSystem/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/paul/CLionProjects/ParticleSystem/cmake-build-debug/CMakeFiles/rebuild_cache.dir

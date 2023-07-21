@@ -5,7 +5,7 @@
 #include "../include/particle.h"
 #include "../include/constants.h"
 
-// Méthode pour dessiner un cercle
+//method to draw a circle
 void Particle::drawCircle(SDL_Renderer* renderer, float _x, float _y, float _radius) const{
     for (int y = -_radius; y <= _radius; y++) {
         for (int x = -_radius; x <= _radius; x++) {
@@ -16,13 +16,13 @@ void Particle::drawCircle(SDL_Renderer* renderer, float _x, float _y, float _rad
     }
 }
 
-// Méthode pour mettre à jour la particule
+//method to update a particle
 void Particle::update(float deltaTime) {
-    // Mettre à jour la position avec la vitesse
+    //update position with speed using the delta time
     float nextX = x + static_cast<float>(velX * deltaTime);
     float nextY = y + static_cast<float>(velY * deltaTime);
 
-    // Gestion des collisions avec les bords de la fenêtre en rebondissant
+    //collisions with window edges
     if (nextX - radius < 0) {
         x = radius;
         velX = -velX;
@@ -45,7 +45,7 @@ void Particle::update(float deltaTime) {
 }
 
 
-// Méthode pour vérifier les collisions avec une autre particule
+//check collisions with other particles
 bool Particle::checkCollision(const Particle &otherParticle) {
     int dx = otherParticle.x - x;
     int dy = otherParticle.y - y;
@@ -54,7 +54,7 @@ bool Particle::checkCollision(const Particle &otherParticle) {
     return distanceSquared <= radiusSquared;
 }
 
-// Méthode pour dessiner la particule
+//draw a particle
 void Particle::draw(SDL_Renderer* renderer) const {
     SDL_SetRenderDrawColor(renderer, red, green, blue, 255);
     drawCircle(renderer, x, y, radius);
