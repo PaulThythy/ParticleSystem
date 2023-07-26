@@ -8,7 +8,7 @@
 #include <time.h>
 #include <cmath>
 
-const int MAX_PARTICLES_PER_TYPE = 100;
+const int MAX_PARTICLES_PER_TYPE = 50;
 
 Particles::Particles(int nb_types_particles, int nb_particles_per_type){
     srand(time(NULL));

@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.24)
-project(particleSystem)
+cmake_minimum_required(VERSION 3.22)
+project(ParticleSystem)
 
 set(CMAKE_CXX_STANDARD 23)
 
