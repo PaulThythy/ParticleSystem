@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Particles particles(5, 1);
+    Particles particles(10, -1);
 
     Uint32 previousTime = 0;
     //Event handling loop
