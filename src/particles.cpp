@@ -8,8 +8,15 @@
 #include <time.h>
 #include <cmath>
 
-Particles::Particles(int nb_types_particles, int nb_particles_per_type){
+Particles::Particles(int nb_types_particles, int nb_particles_per_type=1){
     srand(time(NULL));
+
+    int nb_particles;
+    if(nb_particles_per_type == -1){
+        nb_particles = rand() % nb_particles_per_type + 1;
+    }else{
+        nb_particles = nb_particles_per_type;
+    }
 
     for(int i=0;i<nb_types_particles;i++){
         float randSpeed = static_cast<float>(rand() % 200 + 50);
@@ -23,7 +30,7 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
         float normalizedRadius = (randRadius - minRadius) / (5.0 - minRadius); // Normalize randRadius between 0 and 1
         float randWeight = 10.0 * normalizedRadius * normalizedRadius + 1; // Weight proportional to the square of the normalized radius
 
-        for(int j=0;j<nb_particles_per_type;j++){
+        for(int j=0;j<nb_particles;j++){
             float randX = static_cast<float>(rand() % WINDOW_WIDTH + randRadius);
             float randY = static_cast<float>(rand() % WINDOW_HEIGHT + randRadius);
             float randDirection = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 2.0 * M_PI;
@@ -33,35 +40,6 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
         }
     }
 }
-
-Particles::Particles(int nb_types_particles){
-    srand(time(NULL));
-
-    for(int i=0;i<nb_types_particles;i++){
-        int nb_particles = rand() % max_particles_per_type + 1;
-
-        float randSpeed = static_cast<float>(rand() % 200 + 50);
-        float randRadius = static_cast<float>(rand() % 5 + 0.5);
-        int randRed = rand() % 255;
-        int randGreen = rand() % 255;
-        int randBlue = rand() % 255;
-
-        // Calculate weight based on the square of the radius
-        float minRadius = 0.5; // Minimum allowed radius to avoid division by zero
-        float normalizedRadius = (randRadius - minRadius) / (5.0 - minRadius); // Normalize randRadius between 0 and 1
-        float randWeight = 10.0 * normalizedRadius * normalizedRadius + 1; // Weight proportional to the square of the normalized radius
-
-        for(int j=0;j<max_particles_per_type;j++){
-            float randX = static_cast<float>(rand() % WINDOW_WIDTH + randRadius);
-            float randY = static_cast<float>(rand() % WINDOW_HEIGHT + randRadius);
-            float randDirection = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 2.0 * M_PI;
-
-            Particle particle(randX, randY, randSpeed, randDirection, randRadius, randRed, randGreen, randBlue, randWeight);
-            particles.push_back(particle);
-        }
-    }
-}
-
 
 //method to update a particle
 void Particles::update(float deltaTime) {

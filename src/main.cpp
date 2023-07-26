@@ -3,8 +3,8 @@
 #include "../include/constants.h"
 #include "../include/particles.h"
 
-const int WINDOW_WIDTH = 800;
-const int WINDOW_HEIGHT = 600;
+const int WINDOW_WIDTH = 1100;
+const int WINDOW_HEIGHT = 650;
 
 void render(SDL_Renderer* renderer, Particles particles) {
     //screen cleaning
@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Particles particles(50);
+    Particles particles(5, 1);
 
     Uint32 previousTime = 0;
     //Event handling loop
