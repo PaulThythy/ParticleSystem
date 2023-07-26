@@ -24,15 +24,15 @@ void render(SDL_Renderer* renderer, Particles particles) {
 int main(int argc, char* argv[]) {
     //SDL init
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cout << "Erreur lors de l'initialisation de SDL : " << SDL_GetError() << std::endl;
+        std::cout << "Error during SDL initialization: " << SDL_GetError() << std::endl;
         return 1;
     }
 
     //window creation
-    SDL_Window* window = SDL_CreateWindow("Simulateur de particules", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+    SDL_Window* window = SDL_CreateWindow("Particle Simulation", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                           WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
     if (window == nullptr) {
-        std::cout << "Erreur lors de la création de la fenêtre : " << SDL_GetError() << std::endl;
+        std::cout << "Error during window creation : " << SDL_GetError() << std::endl;
         SDL_Quit();
         return 1;
     }
@@ -40,13 +40,13 @@ int main(int argc, char* argv[]) {
     //render creation
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (renderer == nullptr) {
-        std::cout << "Erreur lors de la création du rendu : " << SDL_GetError() << std::endl;
+        std::cout << "Error during renderer creation : " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
     }
 
-    Particles particles(20);
+    Particles particles(50);
 
     Uint32 previousTime = 0;
     //Event handling loop
