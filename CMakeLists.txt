@@ -3,6 +3,11 @@ project(ParticleSystem)
 
 set(CMAKE_CXX_STANDARD 23)
 
+set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/cmake-build-debug)
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR})
+
+execute_process(COMMAND ${CMAKE_COMMAND} -E chdir ${CMAKE_BINARY_DIR})
+
 set(SDL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2-2.26.2/include)
 set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2-2.26.2/lib/x86)
 

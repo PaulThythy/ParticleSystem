@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/ParticleSystem.dir/src/main.cpp.o CMakeFiles/ParticleSystem.dir/src/particle.cpp.o CMakeFiles/ParticleSystem.dir/src/particles.cpp.o -o ParticleSystem   -L/home/paul/CLionProjects/ParticleSystem/SDL2_LIB_DIR  -Wl,-rpath,/home/paul/CLionProjects/ParticleSystem/SDL2_LIB_DIR -lSDL2main -lSDL2 

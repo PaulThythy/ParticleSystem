@@ -74,13 +74,13 @@ void Particles::update(float deltaTime) {
 
 
 //check collisions with other particles
-bool Particles::checkCollision(const Particle &otherParticle) {
-    /*float dx = otherParticle.x - x;
+/*bool Particles::checkCollision(const Particle &otherParticle) {
+    float dx = otherParticle.x - x;
     float dy = otherParticle.y - y;
     float distanceSquared = dx * dx + dy * dy;
     float radiusSquared = radius * radius;
-    return distanceSquared <= radiusSquared;*/
-}
+    return distanceSquared <= radiusSquared;
+}*/
 
 const std::vector<Particle> &Particles::getVector() const {
     return particles;
