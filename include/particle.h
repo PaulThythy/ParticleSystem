@@ -21,15 +21,15 @@ public:
     float x;
     float y;
 
-    float velX;
-    float velY;
+    float speed;
+    float direction;
 
     const float radius;
 
-    Particle(float _x, float _y, float _velX, float _velY,
+    Particle(float _x, float _y, float _speed, float _direction,
             const float _radius, const int _red, const int _green, const int _blue,
             const float _weight):
-            x(_x), y(_y), velX(_velX), velY(_velY), radius(_radius), red(_red), green(_green), blue(_blue), weight(_weight){}
+            x(_x), y(_y), speed(_speed), direction(_direction), radius(_radius), red(_red), green(_green), blue(_blue), weight(_weight){}
 
     void draw(SDL_Renderer* max_particles_per_typerenderer) const;
 };

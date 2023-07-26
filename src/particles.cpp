@@ -6,13 +6,13 @@
 #include "../include/particle.h"
 #include "../include/constants.h"
 #include <time.h>
+#include <cmath>
 
 Particles::Particles(int nb_types_particles, int nb_particles_per_type){
     srand(time(NULL));
 
     for(int i=0;i<nb_types_particles;i++){
-        float randVelX = rand() % 200 + 50;
-        float randVelY = rand() % 200 + 50;
+        float randSpeed = rand() % 200 + 50;
         float randRadius = rand() % 5 + 0.5;
         int randRed = rand() % 255;
         int randGreen = rand() % 255;
@@ -26,8 +26,9 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
         for(int j=0;j<nb_particles_per_type;j++){
             float randX = rand() % WINDOW_WIDTH + randRadius;
             float randY = rand() % WINDOW_HEIGHT + randRadius;
+            float randDirection = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 2.0 * M_PI;
 
-            Particle particle(randX, randY, randVelX, randVelY, randRadius, randRed, randGreen, randBlue, randWeight);
+            Particle particle(randX, randY, randSpeed, randDirection, randRadius, randRed, randGreen, randBlue, randWeight);
             particles.push_back(particle);
         }
     }
@@ -39,8 +40,7 @@ Particles::Particles(int nb_types_particles){
     for(int i=0;i<nb_types_particles;i++){
         int nb_particles = rand() % max_particles_per_type + 1;
 
-        float randVelX = rand() % 200 + 50;
-        float randVelY = rand() % 200 + 50;
+        float randSpeed = rand() % 200 + 50;
         float randRadius = rand() % 5 + 0.5;
         int randRed = rand() % 255;
         int randGreen = rand() % 255;
@@ -54,8 +54,9 @@ Particles::Particles(int nb_types_particles){
         for(int j=0;j<max_particles_per_type;j++){
             float randX = rand() % WINDOW_WIDTH + randRadius;
             float randY = rand() % WINDOW_HEIGHT + randRadius;
+            float randDirection = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 2.0 * M_PI;
 
-            Particle particle(randX, randY, randVelX, randVelY, randRadius, randRed, randGreen, randBlue, randWeight);
+            Particle particle(randX, randY, randSpeed, randDirection, randRadius, randRed, randGreen, randBlue, randWeight);
             particles.push_back(particle);
         }
     }
@@ -68,26 +69,26 @@ void Particles::update(float deltaTime) {
     for(Particle& particle : particles){
 
         //update position with speed using the delta time
-        float nextX = particle.x + static_cast<float>(particle.velX * deltaTime);
-        float nextY = particle.y + static_cast<float>(particle.velY * deltaTime);
+        float nextX = particle.x + particle.speed * std::cos(particle.direction) * deltaTime;
+        float nextY = particle.y + particle.speed * std::sin(particle.direction) * deltaTime;
 
         //collisions with window edges
         if (nextX - particle.radius < 0) {
             particle.x = particle.radius;
-            particle.velX = -particle.velX;
+            particle.direction = M_PI - particle.direction;
         } else if (nextX + particle.radius > WINDOW_WIDTH) {
             particle.x = WINDOW_WIDTH - particle.radius;
-            particle.velX = -particle.velX;
+            particle.direction = M_PI - particle.direction;
         } else {
             particle.x = nextX;
         }
 
         if (nextY - particle.radius < 0) {
             particle.y = particle.radius;
-            particle.velY = -particle.velY;
+            particle.direction = -particle.direction;
         } else if (nextY + particle.radius > WINDOW_HEIGHT) {
             particle.y = WINDOW_HEIGHT - particle.radius;
-            particle.velY = -particle.velY;
+            particle.direction = -particle.direction;
         } else {
             particle.y = nextY;
         }
