@@ -1,4 +1,9 @@
-#include <SDL.h>
+#ifdef _WIN32
+	#include <SDL.h>
+#elif __linux__
+	#include <SDL2/SDL.h>
+#endif
+
 #include <iostream>
 #include "../include/constants.h"
 #include "../include/particles.h"

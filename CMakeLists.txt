@@ -34,15 +34,17 @@ if(WIN32)
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
+    add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+    target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
+
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    set(SDL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2-2.26.2/include)
-    set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2-2.26.2/lib/x86)
+    set(SDL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/include)
+    set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/lib/x86)
 
     include_directories(SDL2_INCLUDE_DIR)
     link_directories(SDL2_LIB_DIR)
 
+    add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+    target_link_libraries(${PROJECT_NAME} SDL2main SDL2)
+
 endif()
-
-
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
