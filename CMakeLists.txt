@@ -10,6 +10,15 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E chdir ${CMAKE_BINARY_DIR})
 
 set(SDL2_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/cmake)
 
+set(SOURCES
+        ${CMAKE_SOURCE_DIR}/src/main.cpp
+        ${CMAKE_SOURCE_DIR}/src/particle.cpp
+        ${CMAKE_SOURCE_DIR}/src/particles.cpp)
+set(HEADERS
+        ${CMAKE_SOURCE_DIR}/include/particle.h
+        ${CMAKE_SOURCE_DIR}/include/particles.h
+        ${CMAKE_SOURCE_DIR}/include/constants.h)
+
 # Add the appropriate flags for Windows
 if(WIN32)
     # Check if the system is 32-bit or 64-bit
@@ -21,20 +30,19 @@ if(WIN32)
 
     # Add the SDL2.dll file to the binary directory for Windows
     file(COPY ${SDL2_LIB_DIR}/SDL2.dll DESTINATION ${CMAKE_SOURCE_DIR}/cmake-build-debug)
+
+    find_package(SDL2 REQUIRED)
+    include_directories(${SDL2_INCLUDE_DIRS})
+
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(SDL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2-2.26.2/include)
+    set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2-2.26.2/lib/x86)
+
+    include_directories(SDL2_INCLUDE_DIR)
+    link_directories(SDL2_LIB_DIR)
+
 endif()
 
-set(SOURCES
-        ${CMAKE_SOURCE_DIR}/src/main.cpp
-        ${CMAKE_SOURCE_DIR}/src/particle.cpp
-        ${CMAKE_SOURCE_DIR}/src/particles.cpp)
-set(HEADERS
-        ${CMAKE_SOURCE_DIR}/include/particle.h
-        ${CMAKE_SOURCE_DIR}/include/particles.h
-        ${CMAKE_SOURCE_DIR}/include/constants.h)
-
-
-find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
