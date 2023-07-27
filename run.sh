@@ -6,7 +6,7 @@ mkdir cmake-build-debug
 cd cmake-build-debug
 
 #Generate the Makefile using CMake
-cmake ..
+cmake -G "Unix Makefiles" ..
 
 #build the project using CMake
 make
