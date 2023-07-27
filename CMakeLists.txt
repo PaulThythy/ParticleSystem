@@ -23,9 +23,6 @@ if(WIN32)
     file(COPY ${SDL2_LIB_DIR}/SDL2.dll DESTINATION ${CMAKE_SOURCE_DIR}/cmake-build-debug)
 endif()
 
-#set(SDL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/include)
-#set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/lib/x86)
-
 set(SOURCES
         ${CMAKE_SOURCE_DIR}/src/main.cpp
         ${CMAKE_SOURCE_DIR}/src/particle.cpp
