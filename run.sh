@@ -20,4 +20,4 @@ else
 	echo "Compilation failed. Please check the error messages."
 fi
 
-
+read

@@ -5,7 +5,7 @@
 #ifndef PARTICLESYSTEM_PARTICLE_H
 #define PARTICLESYSTEM_PARTICLE_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 class Particle{
 private:
