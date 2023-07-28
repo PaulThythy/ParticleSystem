@@ -38,8 +38,13 @@ if(WIN32)
     target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
 
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/lib/x64)
+    else()
+        set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/lib/x86)
+    endif()
+
     set(SDL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/include)
-    set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/lib/x86)
 
     include_directories(SDL2_INCLUDE_DIR)
     link_directories(SDL2_LIB_DIR)

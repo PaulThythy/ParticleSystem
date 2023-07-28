@@ -22,7 +22,6 @@ void render(SDL_Renderer* renderer, Particles particles) {
     }
 
     //screen update
-#include "../include/constants.h"
     SDL_RenderPresent(renderer);
 }
 

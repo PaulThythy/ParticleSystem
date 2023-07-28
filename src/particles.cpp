@@ -23,7 +23,7 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
         int randGreen = rand() % 255;
         int randBlue = rand() % 255;
 
-        if(nb_particles_per_type == -1){
+        if(nb_particles_per_type <= 0){
             nb_particles = rand() % MAX_PARTICLES_PER_TYPE + 1;
         }else{
             nb_particles = nb_particles_per_type;
