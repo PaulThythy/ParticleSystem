@@ -5,7 +5,7 @@
 #ifndef PARTICLESYSTEM_CONSTANTS_H
 #define PARTICLESYSTEM_CONSTANTS_H
 
-extern const int WINDOW_WIDTH;
-extern const int WINDOW_HEIGHT;
+const int WINDOW_WIDTH = 1100;
+const int WINDOW_HEIGHT = 650;
 
 #endif //PARTICLESYSTEM_CONSTANTS_H

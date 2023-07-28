@@ -13,11 +13,13 @@ set(SDL2_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/cmake)
 set(SOURCES
         ${CMAKE_SOURCE_DIR}/src/main.cpp
         ${CMAKE_SOURCE_DIR}/src/particle.cpp
-        ${CMAKE_SOURCE_DIR}/src/particles.cpp)
+        ${CMAKE_SOURCE_DIR}/src/particles.cpp
+        ${CMAKE_SOURCE_DIR}/src/application.cpp)
 set(HEADERS
         ${CMAKE_SOURCE_DIR}/include/particle.h
         ${CMAKE_SOURCE_DIR}/include/particles.h
-        ${CMAKE_SOURCE_DIR}/include/constants.h)
+        ${CMAKE_SOURCE_DIR}/include/constants.h
+        ${CMAKE_SOURCE_DIR}/include/application.h)
 
 # Add the appropriate flags for Windows
 if(WIN32)
