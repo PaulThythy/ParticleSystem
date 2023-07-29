@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/cmake-build-debug)
 file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR})
 
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -Wall -Wextra -fsanitize=undefined -fsanitize=float-divide-by-zero -fsanitize=integer-divide-by-zero")
+
 execute_process(COMMAND ${CMAKE_COMMAND} -E chdir ${CMAKE_BINARY_DIR})
 
 set(SDL2_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/cmake)

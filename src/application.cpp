@@ -5,7 +5,8 @@
 #include <iostream>
 #include "../include/application.h"
 
-int WINDOW_WIDTH, WINDOW_HEIGHT;
+int WINDOW_WIDTH;
+int WINDOW_HEIGHT;
 
 Application::Application(const int _app_window_width, const int _app_window_height) {
     isRunning = true;
@@ -89,13 +90,13 @@ void Application::render(Particles& particles) {
 }
 
 int Application::execute(){
-    Particles particles(100, -1, WINDOW_WIDTH, WINDOW_HEIGHT);
-
     SDL_Event event;
 
     if (!init()) {
         return -1;
     }
+
+    Particles particles(100, -1, WINDOW_WIDTH, WINDOW_HEIGHT);
 
     Uint32 previousTime = 0;
 
