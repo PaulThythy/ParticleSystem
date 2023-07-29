@@ -19,11 +19,14 @@ private:
     SDL_Window* window;
     SDL_Renderer* renderer;
 
-    int WINDOW_WIDTH;
-    int WINDOW_HEIGHT;
+    int app_window_width;
+    int app_window_height;
+
+    bool full_screen=false;
 
 public:
-    Application(const int _WINDOW_WIDTH, const int _WINDOW_HEIGHT);
+    Application(const int _app_window_width, const int _app_window_height);
+    Application();
 
     int execute();
     bool init();

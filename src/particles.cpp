@@ -4,13 +4,13 @@
 
 #include "../include/particles.h"
 #include "../include/particle.h"
-#include "../include/constants.h"
 #include <time.h>
 #include <cmath>
+#include <iostream>
 
 const int MAX_PARTICLES_PER_TYPE = 50;
 
-Particles::Particles(int nb_types_particles, int nb_particles_per_type){
+Particles::Particles(int nb_types_particles, int nb_particles_per_type, int WINDOW_WIDTH, int WINDOW_HEIGHT){
     srand(time(NULL));
 
     int nb_particles;
@@ -41,7 +41,7 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
 }
 
 //method to update a particle
-void Particles::update(float deltaTime) {
+void Particles::update(float deltaTime, int WINDOW_WIDTH, int WINDOW_HEIGHT) {
 
     for(Particle& particle : particles){
 

@@ -3,7 +3,6 @@
 //
 
 #include "../include/particle.h"
-#include "../include/constants.h"
 
 //method to draw a circle
 void Particle::drawCircle(SDL_Renderer* renderer, float _x, float _y, float _radius) const{

@@ -5,13 +5,23 @@
 #include <iostream>
 #include "../include/application.h"
 
-Application::Application(const int _WINDOW_WIDTH, const int _WINDOW_HEIGHT) {
+int WINDOW_WIDTH, WINDOW_HEIGHT;
+
+Application::Application(const int _app_window_width, const int _app_window_height) {
     isRunning = true;
     window = NULL;
     renderer = NULL;
 
-    WINDOW_WIDTH = _WINDOW_WIDTH;
-    WINDOW_HEIGHT = _WINDOW_HEIGHT;
+    app_window_width = _app_window_width;
+    app_window_height = _app_window_height;
+}
+
+Application::Application(){
+    isRunning = true;
+    window = NULL;
+    renderer = NULL;
+
+    full_screen = true;
 }
 
 bool Application::init(){
@@ -21,9 +31,26 @@ bool Application::init(){
         return false;
     }
 
-    //window creation
-    window = SDL_CreateWindow("Particle Simulation", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                          WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+    if(full_screen){
+        SDL_DisplayMode dm;
+        if (SDL_GetDesktopDisplayMode(0, &dm) != 0) {
+            SDL_Log("Erreur lors de la récupération du mode d'affichage : %s", SDL_GetError());
+            SDL_Quit();
+            return 1;
+        }
+        //window creation
+        window = SDL_CreateWindow("Particle Simulation", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                dm.w, dm.h, SDL_WINDOW_FULLSCREEN);
+        WINDOW_WIDTH = dm.w;
+        WINDOW_HEIGHT = dm.h;
+
+    }
+    else{
+        window = SDL_CreateWindow("Particle Simulation", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                                app_window_width, app_window_height, SDL_WINDOW_SHOWN);
+        WINDOW_WIDTH = app_window_width;
+        WINDOW_HEIGHT = app_window_height;
+    }
     if (window == nullptr) {
         std::cout << "Error during window creation : " << SDL_GetError() << std::endl;
         SDL_Quit();
@@ -62,7 +89,7 @@ void Application::render(Particles& particles) {
 }
 
 int Application::execute(){
-    Particles particles(100, -1);
+    Particles particles(100, -1, WINDOW_WIDTH, WINDOW_HEIGHT);
 
     SDL_Event event;
 
@@ -84,7 +111,7 @@ int Application::execute(){
             onEvent(&event);
         }
 
-        particles.update(deltaTime);
+        particles.update(deltaTime, WINDOW_WIDTH, WINDOW_HEIGHT);
 
         render(particles);
     }

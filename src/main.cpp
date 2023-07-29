@@ -5,9 +5,8 @@
 #endif
 
 #include "../include/application.h"
-#include "../include/constants.h"
 
 int main(int argc, char* argv[]) {
-    Application app(WINDOW_WIDTH, WINDOW_HEIGHT);
+    Application app;
     return app.execute();
 }

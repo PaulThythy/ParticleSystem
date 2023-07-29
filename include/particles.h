@@ -14,10 +14,10 @@ private:
 
 public:
     //a random nb of particles per type if nb_particles_per_type = -1
-    Particles(int nb_types_particles, int nb_particles_per_type);
+    Particles(int nb_types_particles, int nb_particles_per_type, int WINDOW_WIDTH, int WINDOW_HEIGHT);
 
     const std::vector<Particle> &getVector() const;
-    void update(float deltaTime);
+    void update(float deltaTime, int WINDOW_WIDTH, int WINDOW_HEIGHT);
     bool checkCollision(const Particle& otherParticle);
 };
 

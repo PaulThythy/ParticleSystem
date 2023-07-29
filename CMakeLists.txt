@@ -18,7 +18,6 @@ set(SOURCES
 set(HEADERS
         ${CMAKE_SOURCE_DIR}/include/particle.h
         ${CMAKE_SOURCE_DIR}/include/particles.h
-        ${CMAKE_SOURCE_DIR}/include/constants.h
         ${CMAKE_SOURCE_DIR}/include/application.h)
 
 # Add the appropriate flags for Windows
