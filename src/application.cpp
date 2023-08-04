@@ -96,7 +96,7 @@ int Application::execute(){
         return -1;
     }
 
-    Particles particles(100, -1, WINDOW_WIDTH, WINDOW_HEIGHT);
+    Particles particles(10, 5, WINDOW_WIDTH, WINDOW_HEIGHT);
 
     Uint32 previousTime = 0;
 
@@ -117,6 +117,7 @@ int Application::execute(){
         render(particles);
     }
     exit();
+    return 0;
 }
 
 void Application::exit(){
