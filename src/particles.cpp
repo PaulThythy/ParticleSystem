@@ -4,13 +4,14 @@
 
 #include "../include/particles.h"
 #include "../include/particle.h"
+#include "../include/application.h"
 #include <time.h>
 #include <cmath>
 #include <iostream>
 
 const int MAX_PARTICLES_PER_TYPE = 50;
 
-Particles::Particles(int nb_types_particles, int nb_particles_per_type, int WINDOW_WIDTH, int WINDOW_HEIGHT){
+Particles::Particles(int nb_types_particles, int nb_particles_per_type){
     srand(time(NULL));
 
     int nb_particles;
@@ -30,8 +31,8 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type, int WIND
         }
 
         for(int j=0;j<nb_particles;j++){
-            float randX = static_cast<float>(rand() % WINDOW_WIDTH + randRadius);
-            float randY = static_cast<float>(rand() % WINDOW_HEIGHT + randRadius);
+            float randX = static_cast<float>(rand() % G_WINDOW_WIDTH + randRadius);
+            float randY = static_cast<float>(rand() % G_WINDOW_HEIGHT + randRadius);
             float randDirection = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 2.0 * M_PI;
 
             Particle particle(randX, randY, randSpeed, randDirection, randRadius, randRed, randGreen, randBlue, randWeight);
@@ -41,7 +42,7 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type, int WIND
 }
 
 //method to update a particle
-void Particles::update(float deltaTime, int WINDOW_WIDTH, int WINDOW_HEIGHT) {
+void Particles::update(float deltaTime) {
 
     for(Particle& particle : particles){
 
@@ -53,8 +54,8 @@ void Particles::update(float deltaTime, int WINDOW_WIDTH, int WINDOW_HEIGHT) {
         if (nextX - particle.radius < 0) {
             particle.x = particle.radius;
             particle.direction = M_PI - particle.direction;
-        } else if (nextX + particle.radius > WINDOW_WIDTH) {
-            particle.x = WINDOW_WIDTH - particle.radius;
+        } else if (nextX + particle.radius > G_WINDOW_WIDTH) {
+            particle.x = G_WINDOW_WIDTH - particle.radius;
             particle.direction = M_PI - particle.direction;
         } else {
             particle.x = nextX;
@@ -63,8 +64,8 @@ void Particles::update(float deltaTime, int WINDOW_WIDTH, int WINDOW_HEIGHT) {
         if (nextY - particle.radius < 0) {
             particle.y = particle.radius;
             particle.direction = -particle.direction;
-        } else if (nextY + particle.radius > WINDOW_HEIGHT) {
-            particle.y = WINDOW_HEIGHT - particle.radius;
+        } else if (nextY + particle.radius > G_WINDOW_HEIGHT) {
+            particle.y = G_WINDOW_HEIGHT - particle.radius;
             particle.direction = -particle.direction;
         } else {
             particle.y = nextY;

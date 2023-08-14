@@ -19,3 +19,5 @@ if [ $? -eq 0 ]; then
 else
 	echo "Compilation failed. Please check the error messages."
 fi
+
+read
