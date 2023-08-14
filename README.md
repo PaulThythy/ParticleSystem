@@ -5,10 +5,10 @@ This project is based on the SDL2 library. It describes particle interactions in
 The **Unix Makefiles** generator for cmake was chosen for its windows and linux compatibility. Without the precision of the generator, Windows uses the Visual Studio solution, making the project dependent on it.<br/>
 This explains this line in *run.sh* :<br/>
 ```sh
-cmake -G "<Generator>" <path to the CMakeLists.txt>
+cmake -G "<Generator>" <path_to_the_CMakeLists.txt>
 ```
 
-Other generators : <br/>
+Generators : <br/>
 - [Visual Studio 17 2022] - Generates Visual Studio 2022 project files. Use -A option to specify architecture.
 - [Visual Studio 16 2019] - Generates Visual Studio 2019 project files. Use -A option to specify architecture.
 - [Visual Studio 15 2017 <arch>] - Generates Visual Studio 2017 project files. Optional <arch> can be "Win64" or "ARM".
