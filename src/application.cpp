@@ -97,7 +97,7 @@ int Application::execute(){
         return -1;
     }
 
-    Particles particles(10, 5);
+    Particles particles(100, 10);
 
     Uint32 previousTime = 0;
 
