@@ -6,7 +6,7 @@ mkdir cmake-build-debug
 cd cmake-build-debug
 
 #Generate the Makefile using CMake
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug ..
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
 
 #build the project using CMake
 make
