@@ -47,28 +47,32 @@ void Particles::update(float deltaTime) {
     for(Particle& particle : particles){
 
         //update position with speed using the delta time
-        float nextX = particle.x + particle.speed * std::cos(particle.direction) * deltaTime;
-        float nextY = particle.y + particle.speed * std::sin(particle.direction) * deltaTime;
+        float nextX = particle.getX() + particle.getSpeed() * std::cos(particle.getDirection()) * deltaTime;
+        float nextY = particle.getY() + particle.getSpeed() * std::sin(particle.getDirection()) * deltaTime;
 
         //collisions with window edges
-        if (nextX - particle.radius < 0) {
-            particle.x = particle.radius;
-            particle.direction = M_PI - particle.direction;
-        } else if (nextX + particle.radius > G_WINDOW_WIDTH) {
-            particle.x = G_WINDOW_WIDTH - particle.radius;
-            particle.direction = M_PI - particle.direction;
+        if (nextX - particle.getRadius() < 0) {
+            particle.setX(particle.getRadius());
+            particle.setDirection(M_PI - particle.getDirection());
+
+        } else if (nextX + particle.getRadius() > G_WINDOW_WIDTH) {
+            particle.setX(G_WINDOW_WIDTH - particle.getRadius());
+            particle.setDirection(M_PI - particle.getDirection());
+
         } else {
-            particle.x = nextX;
+            particle.setX(nextX);
         }
 
-        if (nextY - particle.radius < 0) {
-            particle.y = particle.radius;
-            particle.direction = -particle.direction;
-        } else if (nextY + particle.radius > G_WINDOW_HEIGHT) {
-            particle.y = G_WINDOW_HEIGHT - particle.radius;
-            particle.direction = -particle.direction;
+        if (nextY - particle.getRadius() < 0) {
+            particle.setY(particle.getRadius());
+            particle.setDirection(-particle.getDirection());
+
+        } else if (nextY + particle.getRadius() > G_WINDOW_HEIGHT) {
+            particle.setY(G_WINDOW_HEIGHT - particle.getRadius());
+            particle.setDirection(-particle.getDirection());
+
         } else {
-            particle.y = nextY;
+            particle.setY(nextY);
         }
     }
 }
