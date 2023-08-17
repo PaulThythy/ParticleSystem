@@ -32,7 +32,7 @@ bool Application::init(){
         return false;
     }
 
-    if(full_screen){
+    if(full_screen) {
         //window creation
         SDL_DisplayMode dm;
         if (SDL_GetDesktopDisplayMode(0, &dm) != 0) {
@@ -44,11 +44,13 @@ bool Application::init(){
         app_window_width = dm.w;
         app_window_height = dm.h;
 
+        window = SDL_CreateWindow("SDL Application", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                                  app_window_width, app_window_height, SDL_WINDOW_FULLSCREEN);
     }
-    // Initialize SDL and create window/renderer
-    SDL_Init(SDL_INIT_VIDEO);
-    window = SDL_CreateWindow("SDL Application", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                              app_window_width, app_window_height, SDL_WINDOW_SHOWN);
+    else{
+        window = SDL_CreateWindow("SDL Application", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                                  app_window_width, app_window_height, SDL_WINDOW_SHOWN);
+    }
 
     if (window == nullptr) {
         std::cout << "Error during window creation : " << SDL_GetError() << std::endl;
