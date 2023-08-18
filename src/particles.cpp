@@ -36,6 +36,7 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
             float randDirection = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 2.0 * M_PI;
 
             Particle particle(randX, randY, randSpeed, randDirection, randRadius, randRed, randGreen, randBlue, randWeight);
+            particle.setAcceleration(0);
             particles.push_back(particle);
         }
     }

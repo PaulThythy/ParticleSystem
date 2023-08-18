@@ -17,6 +17,7 @@ private:
     float y;
 
     float speed;
+    float acceleration;
     float direction;
 
     float radius;
@@ -41,6 +42,7 @@ public:
     float getX();
     float getY();
     float getSpeed();
+    float getAcceleration();
     float getDirection();
     float getRadius();
     int getRed();
@@ -52,6 +54,7 @@ public:
     void setX(float _x);
     void setY(float _y);
     void setSpeed(float _speed);
+    void setAcceleration(float _acceleration);
     void setDirection(float _direction);
     void setRadius(float _radius);
     void setRed(int _red);
