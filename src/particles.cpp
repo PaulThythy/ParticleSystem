@@ -35,8 +35,10 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
             float randY = static_cast<float>(rand() % G_WINDOW_HEIGHT + randRadius);
             float randDirection = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 2.0 * M_PI;
 
-            Particle particle(randX, randY, randSpeed, randDirection, randRadius, randRed, randGreen, randBlue, randWeight);
-            particle.setAcceleration(0);
+            Vector2 vel(static_cast<float>(cos(randDirection) * randSpeed), static_cast<float>(sin(randDirection) * randSpeed));
+            Vector2 acc(0.0f, -9.81);
+
+            Particle particle(randX, randY, vel, acc, randRadius, randRed, randGreen, randBlue, randWeight);
             particles.push_back(particle);
         }
     }

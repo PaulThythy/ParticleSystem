@@ -11,14 +11,15 @@
         #include <SDL2/SDL.h>
 #endif
 
+#include "../include/vector2.h"
+
 class Particle{
 private:
     float x;
     float y;
 
-    float speed;
-    float acceleration;
-    float direction;
+    Vector2 velocity;
+    Vector2 acceleration;
 
     float radius;
 
@@ -31,19 +32,17 @@ private:
     void drawCircle(SDL_Renderer* renderer, float _x, float _y, float _radius) const;
 
 public:
-    Particle(float _x, float _y, float _speed, float _direction,
-            const float _radius, const int _red, const int _green, const int _blue,
-            const float _weight):
-            x(_x), y(_y), speed(_speed), direction(_direction), radius(_radius), red(_red), green(_green), blue(_blue), weight(_weight){}
+    Particle(float _x, float _y, Vector2 _velocity, Vector2 _acceleration, const float _radius, 
+                const int _red, const int _green, const int _blue, const float _weight):
+            x(_x), y(_y), velocity(_velocity), acceleration(_acceleration), radius(_radius), red(_red), green(_green), blue(_blue), weight(_weight){}
 
     void draw(SDL_Renderer* max_particles_per_typerenderer) const;
 
     //getters
     float getX();
     float getY();
-    float getSpeed();
-    float getAcceleration();
-    float getDirection();
+    Vector2 getVelocity();
+    Vector2 getAcceleration();
     float getRadius();
     int getRed();
     int getGreen();
@@ -53,9 +52,8 @@ public:
     //setters
     void setX(float _x);
     void setY(float _y);
-    void setSpeed(float _speed);
-    void setAcceleration(float _acceleration);
-    void setDirection(float _direction);
+    void setVelocity(Vector2 _velocity);
+    void setAcceleration(Vector2 _acceleration);
     void setRadius(float _radius);
     void setRed(int _red);
     void setGreen(int _green);

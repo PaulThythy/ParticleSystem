@@ -28,9 +28,8 @@ void Particle::draw(SDL_Renderer *renderer) const
 
 float Particle::getX() { return x; }
 float Particle::getY() { return y; }
-float Particle::getSpeed() { return speed; }
-float Particle::getAcceleration() { return acceleration; }
-float Particle::getDirection() { return direction; }
+Vector2 Particle::getVelocity() { return velocity; }
+Vector2 Particle::getAcceleration() { return acceleration; }
 float Particle::getRadius() { return radius; }
 int Particle::getRed() { return red; }
 int Particle::getGreen() { return green; }
@@ -39,9 +38,8 @@ float Particle::getWeight() { return weight; }
 
 void Particle::setX(float _x) { x = _x; }
 void Particle::setY(float _y) { y = _y; }
-void Particle::setSpeed(float _speed) { speed = _speed; }
-void Particle::setAcceleration(float _acceleration) { acceleration = _acceleration; }
-void Particle::setDirection(float _direction) { direction = _direction; }
+void Particle::setVelocity(Vector2 _velocity) { velocity = _velocity; }
+void Particle::setAcceleration(Vector2 _acceleration) { acceleration = _acceleration; }
 void Particle::setRadius(float _radius) { radius = _radius; }
 void Particle::setRed(int _red) { red = _red; }
 void Particle::setGreen(int _green) { green = _green; }
