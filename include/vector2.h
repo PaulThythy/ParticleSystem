@@ -19,6 +19,9 @@ public:
     
     float getX();
     float getY();
+
+    void bounceX();
+    void bounceY();
 };
 
 #endif //PARTICLESYSTEM_PARTICLES_H
