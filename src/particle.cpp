@@ -28,8 +28,8 @@ void Particle::draw(SDL_Renderer *renderer) const
 
 float Particle::getX() { return x; }
 float Particle::getY() { return y; }
-Vector2 Particle::getVelocity() { return velocity; }
-Vector2 Particle::getAcceleration() { return acceleration; }
+Vector2& Particle::getVelocity() { return velocity; }
+Vector2& Particle::getAcceleration() { return acceleration; }
 float Particle::getRadius() { return radius; }
 int Particle::getRed() { return red; }
 int Particle::getGreen() { return green; }

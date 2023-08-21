@@ -5,6 +5,8 @@
 #ifndef PARTICLESYSTEM_VECTOR2_H
 #define PARTICLESYSTEM_VECTOR2_H
 
+#include <iostream>
+
 class Vector2{
 private:
     float x;
@@ -22,6 +24,8 @@ public:
 
     void bounceX();
     void bounceY();
+
+    friend std::ostream& operator<<(std::ostream& os, const Vector2& v);
 };
 
 #endif //PARTICLESYSTEM_PARTICLES_H

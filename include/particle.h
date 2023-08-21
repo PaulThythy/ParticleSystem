@@ -41,8 +41,8 @@ public:
     //getters
     float getX();
     float getY();
-    Vector2 getVelocity();
-    Vector2 getAcceleration();
+    Vector2& getVelocity();
+    Vector2& getAcceleration();
     float getRadius();
     int getRed();
     int getGreen();
