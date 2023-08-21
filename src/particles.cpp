@@ -11,15 +11,24 @@
 
 const int MAX_PARTICLES_PER_TYPE = 50;
 
+const int MIN_SPEED = 50;
+const int MAX_SPEED = 200;
+
+const int MIN_RADIUS = 1;
+const int MAX_RADIUS = 7;
+
+const int MIN_WEIGHT = 1;
+const int MAX_WEIGHT = 20;
+
 Particles::Particles(int nb_types_particles, int nb_particles_per_type){
     srand(time(NULL));
 
     int nb_particles;
 
     for(int i=0;i<nb_types_particles;i++){
-        float randSpeed = static_cast<float>(rand() % 200 + 50);
-        float randRadius = static_cast<float>(rand() % 7 + 1.0);
-        float randWeight = static_cast<float>(rand() % 20 + 1.0);
+        float randSpeed = static_cast<float>(rand() % MAX_SPEED + MIN_SPEED);
+        float randRadius = static_cast<float>(rand() % MAX_RADIUS + MIN_RADIUS);
+        float randWeight = static_cast<float>(rand() % MAX_WEIGHT + MIN_WEIGHT);
         int randRed = rand() % 255;
         int randGreen = rand() % 255;
         int randBlue = rand() % 255;
