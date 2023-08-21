@@ -15,9 +15,7 @@
 
 class Particle{
 private:
-    float x;
-    float y;
-
+    Vector2 position;
     Vector2 velocity;
     Vector2 acceleration;
 
@@ -32,15 +30,14 @@ private:
     void drawCircle(SDL_Renderer* renderer, float _x, float _y, float _radius) const;
 
 public:
-    Particle(float _x, float _y, Vector2 _velocity, Vector2 _acceleration, const float _radius, 
+    Particle(Vector2 _position, Vector2 _velocity, Vector2 _acceleration, const float _radius,
                 const int _red, const int _green, const int _blue, const float _weight):
-            x(_x), y(_y), velocity(_velocity), acceleration(_acceleration), radius(_radius), red(_red), green(_green), blue(_blue), weight(_weight){}
+            position(_position), velocity(_velocity), acceleration(_acceleration), radius(_radius), red(_red), green(_green), blue(_blue), weight(_weight){}
 
-    void draw(SDL_Renderer* max_particles_per_typerenderer) const;
+    void draw(SDL_Renderer* renderer);
 
     //getters
-    float getX();
-    float getY();
+    Vector2& getPosition();
     Vector2& getVelocity();
     Vector2& getAcceleration();
     float getRadius();
@@ -50,10 +47,9 @@ public:
     float getWeight();
 
     //setters
-    void setX(float _x);
-    void setY(float _y);
-    void setVelocity(Vector2 _velocity);
-    void setAcceleration(Vector2 _acceleration);
+    void setPosition(Vector2& _position);
+    void setVelocity(Vector2& _velocity);
+    void setAcceleration(Vector2& _acceleration);
     void setRadius(float _radius);
     void setRed(int _red);
     void setGreen(int _green);

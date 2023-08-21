@@ -84,7 +84,7 @@ void Application::render(Particles& particles) {
     SDL_RenderClear(renderer);
 
     //drawing particles
-    for (const Particle& particle : particles.getVector()) {
+    for (Particle particle : particles.getVector()) {
         particle.draw(renderer);
     }
 

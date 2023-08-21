@@ -20,14 +20,12 @@ void Particle::drawCircle(SDL_Renderer *renderer, float _x, float _y, float _rad
 }
 
 // draw a particle
-void Particle::draw(SDL_Renderer *renderer) const
-{
+void Particle::draw(SDL_Renderer* renderer) {
     SDL_SetRenderDrawColor(renderer, red, green, blue, 255);
-    drawCircle(renderer, x, y, radius);
+    drawCircle(renderer, getPosition().getX(), getPosition().getY(), radius);
 }
 
-float Particle::getX() { return x; }
-float Particle::getY() { return y; }
+Vector2& Particle::getPosition() { return position; }
 Vector2& Particle::getVelocity() { return velocity; }
 Vector2& Particle::getAcceleration() { return acceleration; }
 float Particle::getRadius() { return radius; }
@@ -36,10 +34,9 @@ int Particle::getGreen() { return green; }
 int Particle::getBlue() { return blue; }
 float Particle::getWeight() { return weight; }
 
-void Particle::setX(float _x) { x = _x; }
-void Particle::setY(float _y) { y = _y; }
-void Particle::setVelocity(Vector2 _velocity) { velocity = _velocity; }
-void Particle::setAcceleration(Vector2 _acceleration) { acceleration = _acceleration; }
+void Particle::setPosition(Vector2& _position) { position = _position; }
+void Particle::setVelocity(Vector2& _velocity) { velocity = _velocity; }
+void Particle::setAcceleration(Vector2& _acceleration) { acceleration = _acceleration; }
 void Particle::setRadius(float _radius) { radius = _radius; }
 void Particle::setRed(int _red) { red = _red; }
 void Particle::setGreen(int _green) { green = _green; }

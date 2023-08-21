@@ -44,10 +44,11 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
             float randY = static_cast<float>(rand() % G_WINDOW_HEIGHT + randRadius);
             float randDirection = static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * 2.0 * M_PI;
 
+            Vector2 pos(randX, randY);
             Vector2 vel(static_cast<float>(std::cos(randDirection) * randSpeed), static_cast<float>(std::sin(randDirection) * randSpeed));
             Vector2 acc(0.0f, -9.81);
 
-            Particle particle(randX, randY, vel, acc, randRadius, randRed, randGreen, randBlue, randWeight);
+            Particle particle(pos, vel, acc, randRadius, randRed, randGreen, randBlue, randWeight);
             particles.push_back(particle);
         }
     }
@@ -59,32 +60,32 @@ void Particles::update(float deltaTime) {
     for(Particle& particle : particles){
 
         //update position with speed using the delta time
-        float nextX = particle.getX() + particle.getVelocity().getX() * deltaTime;
-        float nextY = particle.getY() + particle.getVelocity().getY() * deltaTime;
+        float nextX = particle.getPosition().getX() + particle.getVelocity().getX() * deltaTime;
+        float nextY = particle.getPosition().getY() + particle.getVelocity().getY() * deltaTime;
 
         //collisions with window edges
         if (nextX - particle.getRadius() < 0) {
-            particle.setX(particle.getRadius());
+            particle.getPosition().setX(particle.getRadius());
             particle.getVelocity().bounceX();
 
         } else if (nextX + particle.getRadius() > G_WINDOW_WIDTH) {
-            particle.setX(G_WINDOW_WIDTH - particle.getRadius());
+            particle.getPosition().setX(G_WINDOW_WIDTH - particle.getRadius());
             particle.getVelocity().bounceX();
 
         } else {
-            particle.setX(nextX);
+            particle.getPosition().setX(nextX);
         }
 
         if (nextY - particle.getRadius() < 0) {
-            particle.setY(particle.getRadius());
+            particle.getPosition().setY(particle.getRadius());
             particle.getVelocity().bounceY();
 
         } else if (nextY + particle.getRadius() > G_WINDOW_HEIGHT) {
-            particle.setY(G_WINDOW_HEIGHT - particle.getRadius());
+            particle.getPosition().setY(G_WINDOW_HEIGHT - particle.getRadius());
             particle.getVelocity().bounceY();
 
         } else {
-            particle.setY(nextY);
+            particle.getPosition().setY(nextY);
         }
     }
 }
