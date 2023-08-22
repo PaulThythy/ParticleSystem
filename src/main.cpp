@@ -7,6 +7,6 @@
 #include "../include/application.h"
 
 int main(int argc, char* argv[]) {
-    Application app;
+    Application app(1000, 800);
     return app.execute();
 }

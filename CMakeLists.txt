@@ -13,17 +13,17 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 set(SDL2_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/cmake)
 
 set(SOURCES
-        ${CMAKE_SOURCE_DIR}/src/main.cpp
-        ${CMAKE_SOURCE_DIR}/src/particle.cpp
-        ${CMAKE_SOURCE_DIR}/src/particles.cpp
-        ${CMAKE_SOURCE_DIR}/src/application.cpp
-        ${CMAKE_SOURCE_DIR}/src/vector2.cpp
+    ${CMAKE_SOURCE_DIR}/src/main.cpp
+    ${CMAKE_SOURCE_DIR}/src/particle.cpp
+    ${CMAKE_SOURCE_DIR}/src/particles.cpp
+    ${CMAKE_SOURCE_DIR}/src/application.cpp
+    ${CMAKE_SOURCE_DIR}/src/vector2.cpp
 )
 set(HEADERS
-        ${CMAKE_SOURCE_DIR}/include/particle.h
-        ${CMAKE_SOURCE_DIR}/include/particles.h
-        ${CMAKE_SOURCE_DIR}/include/application.h
-        ${CMAKE_SOURCE_DIR}/include/vector2.h
+    ${CMAKE_SOURCE_DIR}/include/particle.h
+    ${CMAKE_SOURCE_DIR}/include/particles.h
+    ${CMAKE_SOURCE_DIR}/include/application.h
+    ${CMAKE_SOURCE_DIR}/include/vector2.h
 )
 
 # Add the appropriate flags for Windows

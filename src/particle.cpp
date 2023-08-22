@@ -33,6 +33,7 @@ int Particle::getRed() { return red; }
 int Particle::getGreen() { return green; }
 int Particle::getBlue() { return blue; }
 float Particle::getWeight() { return weight; }
+float Particle::getDrag() { return drag; }
 
 void Particle::setPosition(Vector2& _position) { position = _position; }
 void Particle::setVelocity(Vector2& _velocity) { velocity = _velocity; }
@@ -42,3 +43,4 @@ void Particle::setRed(int _red) { red = _red; }
 void Particle::setGreen(int _green) { green = _green; }
 void Particle::setBlue(int _blue) { blue = _blue; }
 void Particle::setWeight(float _weight) { weight = _weight; }
+void Particle::setDrag(float _drag) { drag = _drag; }

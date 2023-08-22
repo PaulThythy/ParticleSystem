@@ -18,6 +18,7 @@ public:
 
     const std::vector<Particle> &getVector() const;
     void update(float deltaTime);
+
     bool checkCollision(const Particle& otherParticle);
 };
 

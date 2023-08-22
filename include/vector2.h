@@ -25,7 +25,16 @@ public:
     void bounceX();
     void bounceY();
 
+    float length();
+    float length_squared();
+
     friend std::ostream& operator<<(std::ostream& os, const Vector2& v);
+    Vector2 operator+(Vector2& otherVect);
+    Vector2 operator-(Vector2& otherVect);
+    Vector2 operator*(Vector2& otherVect);
+    
+    Vector2 operator/(const float scalar);
+    Vector2 operator*(const float scalar);
 };
 
 #endif //PARTICLESYSTEM_PARTICLES_H

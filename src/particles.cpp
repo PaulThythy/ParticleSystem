@@ -90,7 +90,6 @@ void Particles::update(float deltaTime) {
     }
 }
 
-
 //check collisions with other particles
 /*bool Particles::checkCollision(const Particle &otherParticle) {
     float dx = otherParticle.x - x;
