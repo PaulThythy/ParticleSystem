@@ -26,6 +26,7 @@ void Particle::draw(SDL_Renderer* renderer) {
 }
 
 Vector2& Particle::getPosition() { return position; }
+Vector2& Particle::getPrevPosition() { return prevPosition; }
 Vector2& Particle::getVelocity() { return velocity; }
 Vector2& Particle::getAcceleration() { return acceleration; }
 float Particle::getRadius() { return radius; }
@@ -36,6 +37,7 @@ float Particle::getWeight() { return weight; }
 float Particle::getDrag() { return drag; }
 
 void Particle::setPosition(Vector2& _position) { position = _position; }
+void Particle::setPrevPosition(Vector2& _prevPosition) { prevPosition = _prevPosition; }
 void Particle::setVelocity(Vector2& _velocity) { velocity = _velocity; }
 void Particle::setAcceleration(Vector2& _acceleration) { acceleration = _acceleration; }
 void Particle::setRadius(float _radius) { radius = _radius; }

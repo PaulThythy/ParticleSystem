@@ -16,6 +16,7 @@
 class Particle{
 private:
     Vector2 position;
+    Vector2 prevPosition;
     Vector2 velocity;
     Vector2 acceleration;
 
@@ -40,6 +41,7 @@ public:
 
     //getters
     Vector2& getPosition();
+    Vector2& getPrevPosition();
     Vector2& getVelocity();
     Vector2& getAcceleration();
     float getRadius();
@@ -51,6 +53,7 @@ public:
 
     //setters
     void setPosition(Vector2& _position);
+    void setPrevPosition(Vector2& _prevPosition);
     void setVelocity(Vector2& _velocity);
     void setAcceleration(Vector2& _acceleration);
     void setRadius(float _radius);
