@@ -27,8 +27,6 @@ private:
     int blue;
 
     float weight;
-    //very small value because negligible
-    float drag = 0.001; // rho (density) * C (drag coefficient) * Area (Area projected)
 
     void drawCircle(SDL_Renderer* renderer, float _x, float _y, float _radius) const;
 
