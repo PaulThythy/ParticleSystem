@@ -5,9 +5,6 @@
 #ifndef PARTICLESYSTEM_APPLICATION_H
 #define PARTICLESYSTEM_APPLICATION_H
 
-extern int G_WINDOW_WIDTH;
-extern int G_WINDOW_HEIGHT;
-
 #ifdef _WIN32
     #include <SDL.h>
 #elif __linux__
@@ -15,6 +12,12 @@ extern int G_WINDOW_HEIGHT;
 #endif
 
 #include "../include/particles.h"
+#include "../include/vector2.h"
+
+extern int G_WINDOW_WIDTH;
+extern int G_WINDOW_HEIGHT;
+
+extern Vector2 G_GRAVITY;
 
 class Application {
 private:

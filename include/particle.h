@@ -48,7 +48,6 @@ public:
     int getGreen();
     int getBlue();
     float getMass();
-    float getDrag();
 
     //setters
     void setPosition(Vector2& _position);
@@ -60,7 +59,6 @@ public:
     void setGreen(int _green);
     void setBlue(int _blue);
     void setMass(float _mass);
-    void setDrag(float _drag);
 
 };
 
