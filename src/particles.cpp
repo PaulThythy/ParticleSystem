@@ -17,8 +17,8 @@ const int MAX_SPEED = 200;
 const int MIN_RADIUS = 1;
 const int MAX_RADIUS = 7;
 
-const int MIN_WEIGHT = 1;
-const int MAX_WEIGHT = 20;
+const int MIN_MASS = 1;
+const int MAX_MASS = 20;
 
 Particles::Particles(int nb_types_particles, int nb_particles_per_type){
     srand(time(NULL));
@@ -28,7 +28,7 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
     for(int i=0;i<nb_types_particles;i++){
         float randSpeed = static_cast<float>(rand() % MAX_SPEED + MIN_SPEED);
         float randRadius = static_cast<float>(rand() % MAX_RADIUS + MIN_RADIUS);
-        float randWeight = static_cast<float>(rand() % MAX_WEIGHT + MIN_WEIGHT);
+        float randMass = static_cast<float>(rand() % MAX_MASS + MIN_MASS);
         int randRed = rand() % 255;
         int randGreen = rand() % 255;
         int randBlue = rand() % 255;
@@ -46,9 +46,8 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
 
             Vector2 pos(randX, randY);
             Vector2 vel(static_cast<float>(std::cos(randDirection) * randSpeed), static_cast<float>(std::sin(randDirection) * randSpeed));
-            Vector2 acc(0.0f, -9.81);
 
-            Particle particle(pos, vel, acc, randRadius, randRed, randGreen, randBlue, randWeight);
+            Particle particle(pos, vel, randRadius, randRed, randGreen, randBlue, randMass);
             particles.push_back(particle);
         }
     }

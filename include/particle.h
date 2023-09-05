@@ -26,14 +26,15 @@ private:
     int green;
     int blue;
 
-    float weight;
+    float mass;
 
     void drawCircle(SDL_Renderer* renderer, float _x, float _y, float _radius) const;
 
 public:
-    Particle(Vector2& _position, Vector2& _velocity, Vector2& _acceleration, const float _radius,
-                const int _red, const int _green, const int _blue, const float _weight):
-            position(_position), velocity(_velocity), acceleration(_acceleration), radius(_radius), red(_red), green(_green), blue(_blue), weight(_weight){}
+    Particle(Vector2& _position, Vector2& _velocity, const float _radius,
+            const int _red, const int _green, const int _blue, const float _mass):
+            position(_position), velocity(_velocity), radius(_radius), 
+            red(_red), green(_green), blue(_blue), mass(_mass){}
 
     void draw(SDL_Renderer* renderer);
 
@@ -46,7 +47,7 @@ public:
     int getRed();
     int getGreen();
     int getBlue();
-    float getWeight();
+    float getMass();
     float getDrag();
 
     //setters
@@ -58,7 +59,7 @@ public:
     void setRed(int _red);
     void setGreen(int _green);
     void setBlue(int _blue);
-    void setWeight(float _weight);
+    void setMass(float _mass);
     void setDrag(float _drag);
 
 };
