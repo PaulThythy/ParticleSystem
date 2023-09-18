@@ -3,12 +3,18 @@ project(ParticleSystem)
 
 set(CMAKE_CXX_STANDARD 23)
 
-set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/cmake-build-debug)
-file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR})
-
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wfatal-errors -Werror -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/Debug")
+    set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build/Debug)
+    file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR})
+else()
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/Release")
+    set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build/Release)
+    file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR})
+endif()
 
 set(SDL2_DIR ${CMAKE_SOURCE_DIR}/libs/SDL2/cmake)
 
@@ -36,7 +42,7 @@ if(WIN32)
     endif()
 
     # Add the SDL2.dll file to the binary directory for Windows
-    file(COPY ${SDL2_LIB_DIR}/SDL2.dll DESTINATION ${CMAKE_SOURCE_DIR}/cmake-build-debug)
+    file(COPY ${SDL2_LIB_DIR}/SDL2.dll DESTINATION ${CMAKE_BINARY_DIR})
 
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
