@@ -7,7 +7,7 @@ mkdir build
 build_type=Debug 
 
 #Generate the Makefile using CMake
-cmake -S . -B build/$build_type -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=$build_type
+cmake -S . -B build/$build_type -G "Ninja" -DCMAKE_BUILD_TYPE=$build_type
 cmake --build build/$build_type --target ParticleSystem
 
 
@@ -19,3 +19,5 @@ if [ $? -eq 0 ]; then
 else
 	echo "Compilation failed. Please check the error messages."
 fi
+
+read
