@@ -1,9 +1,5 @@
 #!/bin/bash
 
-#Create a build directory and navigate into it
-rm -rf build
-mkdir build
-
 build_type=Debug 
 
 #Generate the Makefile using CMake
