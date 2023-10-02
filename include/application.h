@@ -19,6 +19,8 @@ extern int G_WINDOW_HEIGHT;
 
 extern Vector2 G_GRAVITY;
 
+extern unsigned int G_NUMBER_OF_CORES;
+
 class Application {
 private:
     bool isRunning;

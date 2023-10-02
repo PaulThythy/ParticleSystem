@@ -3,10 +3,14 @@
 //
 
 #include <iostream>
+#include <thread>
+
 #include "../include/application.h"
 
 int G_WINDOW_WIDTH;
 int G_WINDOW_HEIGHT;
+
+unsigned int G_NUMBER_OF_CORES = std::thread::hardware_concurrency();
 
 Application::Application(const int _app_window_width, const int _app_window_height) {
     isRunning = true;
@@ -118,6 +122,8 @@ int Application::execute(){
         particles.update(deltaTime);
 
         render(particles);
+
+        std::cout << "number of threads : " << G_NUMBER_OF_CORES << std::endl;
     }
     exit();
     return 0;
