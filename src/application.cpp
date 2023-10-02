@@ -122,8 +122,6 @@ int Application::execute(){
         particles.update(deltaTime);
 
         render(particles);
-
-        std::cout << "number of threads : " << G_NUMBER_OF_CORES << std::endl;
     }
     exit();
     return 0;
