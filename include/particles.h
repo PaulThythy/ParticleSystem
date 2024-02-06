@@ -17,9 +17,8 @@ public:
     Particles(int nb_types_particles, int nb_particles_per_type);
 
     const std::vector<Particle> &getVector() const;
-    void update(float deltaTime);
 
-    bool checkCollision(const Particle& otherParticle);
+    //bool checkCollision(const Particle& otherParticle);
 };
 
 #endif //PARTICLESYSTEM_PARTICLES_H
