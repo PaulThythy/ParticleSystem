@@ -5,7 +5,7 @@
 #ifndef PARTICLESYSTEM_PARTICLES_H
 #define PARTICLESYSTEM_PARTICLES_H
 
-#include "../include/particle.h"
+#include "particle.h"
 #include <vector>
 
 class Particles{

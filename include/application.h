@@ -11,8 +11,8 @@
     #include <SDL2/SDL.h>
 #endif
 
-#include "../include/particles.h"
-#include "../include/vector2.h"
+#include "particles.h"
+#include "vector2.h"
 
 extern int G_WINDOW_WIDTH;
 extern int G_WINDOW_HEIGHT;
