@@ -12,9 +12,6 @@ void Vector2::setY(const float _y) { y = _y; }
 float Vector2::getX() { return x; }
 float Vector2::getY() { return y; }
 
-void Vector2::bounceX() { x = -x; }
-void Vector2::bounceY() { y = -y; }
-
 float Vector2::length() {
     return std::sqrt(x * x + y * y);
 }

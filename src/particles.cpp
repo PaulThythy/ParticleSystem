@@ -79,11 +79,11 @@ void Particles::update(float deltaTime) {
         //collisions with window edges
         if (nextX - particle.getRadius() < 0) {
             particle.getPosition().setX(particle.getRadius());
-            particle.getVelocity().bounceX();
+            particle.getVelocity().setX(-particle.getVelocity().getX());
 
         } else if (nextX + particle.getRadius() > G_WINDOW_WIDTH) {
             particle.getPosition().setX(G_WINDOW_WIDTH - particle.getRadius());
-            particle.getVelocity().bounceX();
+            particle.getVelocity().setX(-particle.getVelocity().getX());
 
         } else {
             particle.getPosition().setX(nextX);
@@ -91,11 +91,11 @@ void Particles::update(float deltaTime) {
 
         if (nextY - particle.getRadius() < 0) {
             particle.getPosition().setY(particle.getRadius());
-            particle.getVelocity().bounceY();
+            particle.getVelocity().setY(-particle.getVelocity().getY());
 
         } else if (nextY + particle.getRadius() > G_WINDOW_HEIGHT) {
             particle.getPosition().setY(G_WINDOW_HEIGHT - particle.getRadius());
-            particle.getVelocity().bounceY();
+            particle.getVelocity().setY(-particle.getVelocity().getY());
 
         } else {
             particle.getPosition().setY(nextY);

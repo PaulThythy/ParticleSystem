@@ -22,9 +22,6 @@ public:
     float getX();
     float getY();
 
-    void bounceX();
-    void bounceY();
-
     float length();
     float length_squared();
 
