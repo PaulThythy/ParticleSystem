@@ -44,10 +44,17 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
 
             Vector2 pos(randX, randY);
             Vector2 vel(static_cast<float>(std::cos(randDirection) * randSpeed), static_cast<float>(std::sin(randDirection) * randSpeed));
+            Vector2 prevPros(randX, randY);
 
             Particle particle(pos, vel, randRadius, randRed, randGreen, randBlue, randMass);
             particles.push_back(particle);
         }
+    }
+}
+
+void Particles::updateAll(float deltaTime) {
+    for(auto& particle : particles) {
+        particle.update(deltaTime);
     }
 }
 
@@ -60,6 +67,6 @@ Particles::Particles(int nb_types_particles, int nb_particles_per_type){
     return distanceSquared <= radiusSquared;
 }*/
 
-const std::vector<Particle> &Particles::getVector() const {
+std::vector<Particle> &Particles::getVector() {
     return particles;
 }

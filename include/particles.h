@@ -16,7 +16,9 @@ public:
     //a random nb of particles per type if nb_particles_per_type = -1
     Particles(int nb_types_particles, int nb_particles_per_type);
 
-    const std::vector<Particle> &getVector() const;
+    void updateAll(float deltaTime);
+
+    std::vector<Particle> &getVector();
 
     //bool checkCollision(const Particle& otherParticle);
 };

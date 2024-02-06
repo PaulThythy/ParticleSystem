@@ -103,7 +103,7 @@ int Application::execute(){
         return -1;
     }
 
-    Particles particles(1, 1);
+    Particles particles(1000, 1);
 
     Uint32 previousTime = 0;
 
@@ -119,9 +119,7 @@ int Application::execute(){
             onEvent(&event);
         }
 
-        for (Particle particle : particles.getVector()) {
-            particle.update(deltaTime);
-        }
+        particles.updateAll(deltaTime);
 
         render(particles);
     }

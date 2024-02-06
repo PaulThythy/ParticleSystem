@@ -37,8 +37,8 @@ void Particle::update(float deltaTime) {
     float nextY = position.getY() + velocity.getY() * deltaTime + ((deltaTime * deltaTime)/2) * acceleration.getY();
 
     //updating velocity
-    float nextVelX = velocity.getX() + (deltaTime/2) * acceleration.getX() + acceleration.getX();
-    float nextVelY = velocity.getY() + (deltaTime/2) * acceleration.getY() + acceleration.getY();
+    float nextVelX = velocity.getX() + (deltaTime/2) * acceleration.getX() + acc.getX();
+    float nextVelY = velocity.getY() + (deltaTime/2) * acceleration.getY() + acc.getY();
 
     Vector2 nextVel(nextVelX, nextVelY);
     setVelocity(nextVel);
