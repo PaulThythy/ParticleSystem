@@ -3,6 +3,10 @@
 //
 
 #include "../include/particle.h"
+#include "../include/application.h"
+
+//y axis inverted
+Vector2 G_GRAVITY(0.0f, 9.81);
 
 // method to draw a circle
 void Particle::drawCircle(SDL_Renderer *renderer, float _x, float _y, float _radius) const
@@ -22,19 +26,19 @@ void Particle::drawCircle(SDL_Renderer *renderer, float _x, float _y, float _rad
 // draw a particle
 void Particle::draw(SDL_Renderer* renderer) {
     SDL_SetRenderDrawColor(renderer, red, green, blue, 255);
-    drawCircle(renderer, getPosition().getX(), getPosition().getY(), radius);
+    drawCircle(renderer, position.getX(), position.getY(), radius);
 }
 
 void Particle::update(float deltaTime) {
     Vector2 acc = G_GRAVITY/getMass();
 
     //updating position using verlet integration
-    float nextX = getPosition().getX() + getVelocity().getX() * deltaTime + ((deltaTime * deltaTime)/2) * getAcceleration().getX();
-    float nextY = getPosition().getY() + getVelocity().getY() * deltaTime + ((deltaTime * deltaTime)/2) * getAcceleration().getY();
+    float nextX = position.getX() + velocity.getX() * deltaTime + ((deltaTime * deltaTime)/2) * acceleration.getX();
+    float nextY = position.getY() + velocity.getY() * deltaTime + ((deltaTime * deltaTime)/2) * acceleration.getY();
 
     //updating velocity
-    float nextVelX = getVelocity().getX() + (deltaTime/2) * getAcceleration().getX() + acceleration.getX();
-    float nextVelY = getVelocity().getY() + (deltaTime/2) * getAcceleration().getY() + acceleration.getY();
+    float nextVelX = velocity.getX() + (deltaTime/2) * acceleration.getX() + acceleration.getX();
+    float nextVelY = velocity.getY() + (deltaTime/2) * acceleration.getY() + acceleration.getY();
 
     Vector2 nextVel(nextVelX, nextVelY);
     setVelocity(nextVel);
@@ -43,28 +47,28 @@ void Particle::update(float deltaTime) {
     setAcceleration(acc);
 
     //collisions with window edges
-    if (nextX - getRadius() < 0) {
-        getPosition().setX(getRadius());
-        getVelocity().setX(-getVelocity().getX());
+    if (nextX - radius < 0) {
+        position.setX(radius);
+        velocity.setX(-velocity.getX());
 
-    } else if (nextX + getRadius() > G_WINDOW_WIDTH) {
-        getPosition().setX(G_WINDOW_WIDTH - getRadius());
-        getVelocity().setX(-getVelocity().getX());
+    } else if (nextX + radius > G_WINDOW_WIDTH) {
+        position.setX(G_WINDOW_WIDTH - radius);
+        velocity.setX(-velocity.getX());
 
     } else {
-        getPosition().setX(nextX);
+        position.setX(nextX);
     }
 
-    if (nextY - getRadius() < 0) {
-        getPosition().setY(getRadius());
-        getVelocity().setY(-getVelocity().getY());
+    if (nextY - radius < 0) {
+        position.setY(radius);
+        velocity.setY(-velocity.getY());
 
-    } else if (nextY + getRadius() > G_WINDOW_HEIGHT) {
-        getPosition().setY(G_WINDOW_HEIGHT - getRadius());
-        getVelocity().setY(-getVelocity().getY());
+    } else if (nextY + radius > G_WINDOW_HEIGHT) {
+        position.setY(G_WINDOW_HEIGHT - radius);
+        velocity.setY(-velocity.getY());
 
     } else {
-        getPosition().setY(nextY);
+        position.setY(nextY);
     }
 }
 

@@ -12,10 +12,6 @@
 #endif
 
 #include "vector2.h"
-#include "application.h"
-
-//y axis inverted
-Vector2 G_GRAVITY(0.0f, 9.81);
 
 class Particle{
 private:

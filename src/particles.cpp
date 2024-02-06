@@ -2,6 +2,7 @@
 // Created by paul on 18/07/23.
 //
 
+#include "../include/application.h"
 #include "../include/particles.h"
 #include <time.h>
 #include <cmath>
