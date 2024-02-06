@@ -12,6 +12,10 @@
 #endif
 
 #include "../include/vector2.h"
+#include "../include/application.h"
+
+//y axis inverted
+Vector2 G_GRAVITY(0.0f, 9.81);
 
 class Particle{
 private:
@@ -37,6 +41,8 @@ public:
             red(_red), green(_green), blue(_blue), mass(_mass){}
 
     void draw(SDL_Renderer* renderer);
+
+    void update(float deltaTime);
 
     //getters
     Vector2& getPosition();

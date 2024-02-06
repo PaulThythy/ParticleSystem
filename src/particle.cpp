@@ -25,6 +25,49 @@ void Particle::draw(SDL_Renderer* renderer) {
     drawCircle(renderer, getPosition().getX(), getPosition().getY(), radius);
 }
 
+void Particle::update(float deltaTime) {
+    Vector2 acc = G_GRAVITY/getMass();
+
+    //updating position using verlet integration
+    float nextX = getPosition().getX() + getVelocity().getX() * deltaTime + ((deltaTime * deltaTime)/2) * getAcceleration().getX();
+    float nextY = getPosition().getY() + getVelocity().getY() * deltaTime + ((deltaTime * deltaTime)/2) * getAcceleration().getY();
+
+    //updating velocity
+    float nextVelX = getVelocity().getX() + (deltaTime/2) * getAcceleration().getX() + acceleration.getX();
+    float nextVelY = getVelocity().getY() + (deltaTime/2) * getAcceleration().getY() + acceleration.getY();
+
+    Vector2 nextVel(nextVelX, nextVelY);
+    setVelocity(nextVel);
+
+    //updating acceleration
+    setAcceleration(acc);
+
+    //collisions with window edges
+    if (nextX - getRadius() < 0) {
+        getPosition().setX(getRadius());
+        getVelocity().setX(-getVelocity().getX());
+
+    } else if (nextX + getRadius() > G_WINDOW_WIDTH) {
+        getPosition().setX(G_WINDOW_WIDTH - getRadius());
+        getVelocity().setX(-getVelocity().getX());
+
+    } else {
+        getPosition().setX(nextX);
+    }
+
+    if (nextY - getRadius() < 0) {
+        getPosition().setY(getRadius());
+        getVelocity().setY(-getVelocity().getY());
+
+    } else if (nextY + getRadius() > G_WINDOW_HEIGHT) {
+        getPosition().setY(G_WINDOW_HEIGHT - getRadius());
+        getVelocity().setY(-getVelocity().getY());
+
+    } else {
+        getPosition().setY(nextY);
+    }
+}
+
 Vector2& Particle::getPosition() { return position; }
 Vector2& Particle::getPrevPosition() { return prevPosition; }
 Vector2& Particle::getVelocity() { return velocity; }

@@ -10,7 +10,7 @@
 int G_WINDOW_WIDTH;
 int G_WINDOW_HEIGHT;
 
-unsigned int G_NUMBER_OF_CORES = std::thread::hardware_concurrency();
+//unsigned int G_NUMBER_OF_CORES = std::thread::hardware_concurrency();
 
 Application::Application(const int _app_window_width, const int _app_window_height) {
     isRunning = true;
@@ -119,7 +119,9 @@ int Application::execute(){
             onEvent(&event);
         }
 
-        particles.update(deltaTime);
+        for (Particle particle : particles.getVector()) {
+            particle.update(deltaTime);
+        }
 
         render(particles);
     }
